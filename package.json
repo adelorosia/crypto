@@ -3,12 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite --port=3000",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc --build --clean && vite build",
+		"start": "vite serve --host --port 3506",
+		"cp": "node cli/cp.mjs",
+		"setup": "npm i && pm2 start --name starters-orosia.online npm -- start --update-env --time && pm2 save",
+		"deploy": "git pull --no-rebase && pm2 restart starters-orosia.online --update-env --time && pm2 save"
+	},
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
